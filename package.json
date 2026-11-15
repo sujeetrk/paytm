@@ -1,0 +1,12 @@
+{
+  "name": "mobile-banking-app",
+  "version": "1.0.0",
+  "description": "Mobile Banking and UPI App Demo",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

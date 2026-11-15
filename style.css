@@ -1,0 +1,87 @@
+/* Custom Styling for Mobile Banking Application Demo */
+
+/* Hide standard scrollbars while keeping touch scroll active */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Screen visibility switching */
+.screen-view {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.screen-view.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Numeric keypad buttons */
+.keypad-btn {
+  height: 52px;
+  border-radius: 12px;
+  background-color: #f1f3f5;
+  color: #1e293b;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.1s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.keypad-btn:active {
+  transform: scale(0.96);
+  background-color: #e2e8f0;
+}
+
+/* Filled state for UPI PIN dots */
+.pin-dot.filled {
+  background-color: #0f172a;
+  border-color: #0f172a;
+}
+
+/* Smooth fade animation for balance card */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+/* Screen Tab Active State in presentation header */
+.screen-tab.active-tab {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+/* On mobile viewports, remove the desktop border and shadow */
+@media (max-width: 640px) {
+  body {
+    background-color: #ffffff;
+  }
+  main {
+    min-height: 100vh;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: none;
+    border: none;
+  }
+}
