@@ -9,25 +9,29 @@
   scrollbar-width: none;
 }
 
-/* Screen visibility switching */
+/* Screen visibility switching - strictly enforced */
 .screen-view {
-  display: none;
+  display: none !important;
   opacity: 0;
-  transition: opacity 0.2s ease-in-out;
 }
 
 .screen-view.active {
-  display: block;
+  display: block !important;
   opacity: 1;
+}
+
+/* Flex container screens when active */
+.screen-view.active.screen-flex {
+  display: flex !important;
 }
 
 /* Numeric keypad buttons */
 .keypad-btn {
-  height: 52px;
+  height: 48px;
   border-radius: 12px;
   background-color: #f1f3f5;
   color: #1e293b;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -53,7 +57,7 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -62,7 +66,7 @@
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.25s ease-out forwards;
+  animation: fadeIn 0.2s ease-out forwards;
 }
 
 /* Screen Tab Active State in presentation header */
@@ -72,16 +76,17 @@
   font-weight: 700;
 }
 
-/* On mobile viewports, remove the desktop border and shadow */
+/* On mobile viewports, remove desktop borders */
 @media (max-width: 640px) {
   body {
     background-color: #ffffff;
   }
   main {
-    min-height: 100vh;
-    border-radius: 0;
-    margin: 0;
-    box-shadow: none;
-    border: none;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
   }
 }

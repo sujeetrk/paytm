@@ -6,7 +6,7 @@
 let currentPin = '';
 const MAX_PIN_LENGTH = 6;
 
-// Switch screens smoothly
+// Switch screens smoothly and manage navigation bar visibility
 function switchScreen(screenId) {
   const allScreens = document.querySelectorAll('.screen-view');
   allScreens.forEach(screen => {
@@ -16,9 +16,12 @@ function switchScreen(screenId) {
   const targetScreen = document.getElementById(`screen-${screenId}`);
   if (targetScreen) {
     targetScreen.classList.add('active');
+    if (screenId === 'upi-pin') {
+      targetScreen.classList.add('screen-flex');
+    }
   }
 
-  // Update top bar tabs if present
+  // Update top presentation tabs if present
   const allTabs = document.querySelectorAll('.screen-tab');
   allTabs.forEach(tab => {
     if (tab.getAttribute('data-screen') === screenId) {
@@ -28,11 +31,30 @@ function switchScreen(screenId) {
     }
   });
 
-  // Scroll main container to top
-  const container = document.getElementById('screens-container');
-  if (container) {
-    container.scrollTo({ top: 0, behavior: 'smooth' });
+  // Manage bottom navbar: Native Paytm only shows bottom navbar on Home & History tabs.
+  // Account Details, PIN entry, and Balance Result screens are standalone full views.
+  const bottomNav = document.getElementById('bottom-navbar');
+  const screensContainer = document.getElementById('screens-container');
+
+  if (bottomNav) {
+    if (screenId === 'bank-details' || screenId === 'upi-pin' || screenId === 'balance-result') {
+      bottomNav.style.display = 'none';
+      if (screensContainer) {
+        screensContainer.style.paddingBottom = '0';
+      }
+    } else {
+      bottomNav.style.display = 'flex';
+      if (screensContainer) {
+        screensContainer.style.paddingBottom = '3.5rem';
+      }
+    }
   }
+
+  // Instant scroll to top to prevent white gap artifacts
+  if (screensContainer) {
+    screensContainer.scrollTop = 0;
+  }
+  window.scrollTo(0, 0);
 
   // Reset PIN input if returning to pin screen
   if (screenId === 'upi-pin') {
@@ -74,9 +96,8 @@ function resetPin() {
   updatePinDots();
 }
 
-// Submit PIN and navigate to Balance Screen (Screen 5)
+// Submit PIN and navigate directly to static Balance Screen (Screen 5)
 function submitPin() {
-  // If PIN entered or even empty for quick demo testing
   const checkBtn = document.querySelector('button[onclick="submitPin()"]');
   if (checkBtn) {
     checkBtn.textContent = '...';
@@ -89,7 +110,7 @@ function submitPin() {
       checkBtn.disabled = false;
     }
     switchScreen('balance-result');
-  }, 400);
+  }, 350);
 }
 
 // Listen for physical keyboard input on PIN screen
@@ -108,6 +129,5 @@ document.addEventListener('keydown', (e) => {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
-  // Start on home screen by default
   switchScreen('home');
 });
