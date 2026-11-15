@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Payment & Banking App</title>
+  <title>Paytm: Secure UPI Payments</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,21 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="bg-slate-950 text-slate-900 font-['Inter',sans-serif] min-h-screen flex flex-col items-center justify-start antialiased selection:bg-blue-100 selection:text-blue-900">
-
-  <!-- Desktop Presentation Bar (Hidden on Mobile) -->
-  <header class="w-full bg-slate-900 text-white text-xs py-1.5 px-4 shadow-md flex items-center justify-between no-print z-50">
-    <div class="flex items-center space-x-2">
-      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-      <span class="font-semibold tracking-wide text-[11px]">Federal Bank App Demo</span>
-    </div>
-    <div class="flex items-center space-x-1 overflow-x-auto py-0.5">
-      <button onclick="switchScreen('home')" class="screen-tab px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 transition text-[11px] font-medium" data-screen="home">1. Home</button>
-      <button onclick="switchScreen('balance-history')" class="screen-tab px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 transition text-[11px] font-medium" data-screen="balance-history">2. Balance & History</button>
-      <button onclick="switchScreen('bank-details')" class="screen-tab px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 transition text-[11px] font-medium" data-screen="bank-details">3. Bank A/c</button>
-      <button onclick="switchScreen('upi-pin')" class="screen-tab px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 transition text-[11px] font-medium" data-screen="upi-pin">4. UPI PIN</button>
-      <button onclick="switchScreen('balance-result')" class="screen-tab px-2.5 py-0.5 rounded bg-emerald-700 hover:bg-emerald-600 text-white transition text-[11px] font-bold" data-screen="balance-result">5. ₹75,258.98 (Static)</button>
-    </div>
-  </header>
 
   <!-- Mobile Viewport Container -->
   <main class="w-full max-w-[420px] h-screen sm:h-[844px] sm:my-3 sm:rounded-[36px] sm:shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-white overflow-hidden relative border-0 sm:border-[6px] sm:border-slate-800 flex flex-col justify-between">
